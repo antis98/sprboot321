@@ -4,7 +4,7 @@
 <title>Create user</title>
 
 <body>
-<form action="#" th:action="@{/user-create}" th:object="${user}" method="post">
+<form th:method="PUT" action="#" th:action="@{/user-create}" th:object="${user}" >
     <label for="firstName">First name</label>
     <input type="text" th:field="*{firstName}" id="firstName" placeholder="First Name">
     <label for="lastName">Last name</label>

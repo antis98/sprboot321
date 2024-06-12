@@ -34,14 +34,14 @@ public class UsersController {
         return "user-create";
     }
 
-    @PostMapping("/user-create")
+    @PutMapping("/user-create")
     public String createUser(User user){
 
         userService.saveUser(user);
         return "redirect:/users";
     }
 
-    @GetMapping("user-delete")
+    @DeleteMapping("/user-delete")
     public String deleteUser(@RequestParam(value = "id")  Long id){
         userService.deleteById(id);
         return "redirect:/users";
@@ -54,61 +54,9 @@ public class UsersController {
         return "user-update";
     }
 
-    @PostMapping("/user-update")
+    @PutMapping("/user-update")
     public String updateUser(User user){
         userService.saveUser(user);
         return "redirect:/users";
     }
-    /*
-
-    @GetMapping
-    public ModelAndView allUsers() {
-        List<User> users = userService.allUsers();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("users");
-        modelAndView.addObject("usersList", users);
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/edit")
-    public ModelAndView editPage(@RequestParam(value = "id") Long id) {
-        User user = userService.getById(id);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editPage");
-        modelAndView.addObject("user", user);
-        return modelAndView;
-    }
-
-    @PostMapping(value = "/edit")
-    public ModelAndView editUser(@ModelAttribute("user") User user) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
-        userService.edit(user);
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/add")
-    public ModelAndView addPage() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editPage");
-        return modelAndView;
-    }
-
-    @PostMapping(value = "/add")
-    public ModelAndView addUser(@ModelAttribute("user") User user) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
-        userService.add(user);
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/delete")
-    public ModelAndView deleteUser(@RequestParam(value = "id") Long id) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
-        User user = userService.getById(id);
-        userService.delete(user);
-        return modelAndView;
-    }
-    */
 }

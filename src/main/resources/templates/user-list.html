@@ -26,8 +26,21 @@
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.year}"></td>
                 <td th:text="${user.employer}"></td>
-                <td><a th:href="@{'user-update?id='+${user.id}}">Edit</a></td>
-                <td><a th:href="@{'user-delete?id='+${user.id}}">Delete</a></td>
+                <!--<td><a th:href="@{'user-update?id='+${user.id}}">Edit</a></td>
+                <td><input type="submit"  th:method="DELETE" th:action="@{'user-delete?id='+${user.id}}" value="Delete"></td>
+                <td><a type="hidden" th:method="DELETE" th:href="@{'user-delete?id='+${user.id}}">Delete</a></td>-->
+                <td>
+                    <form th:action="@{'user-delete?id='+${user.id}}" th:method="DELETE">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{'user-update?id='+${user.id}} " th:method="GET">
+                        <input type="hidden" name="id" th:value="${user.id}"/>
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
+
             </tr>
             </tbody>
         </table>
